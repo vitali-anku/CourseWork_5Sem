@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
 //
         listView = findViewById(R.id.listView1);
 //
-//        if (ArList.list.size() != 0) {
-//            listView.setAdapter(adapter);
-//        }
+        if (ArList.list.size() != 0) {
+            Adapter adapter = new Adapter(this, ArList.list);
+            listView.setAdapter(adapter);
+        }
     }
 
     public void OnClick(View view){
