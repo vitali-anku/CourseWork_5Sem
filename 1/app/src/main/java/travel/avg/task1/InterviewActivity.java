@@ -3,6 +3,7 @@ package travel.avg.task1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -72,28 +73,6 @@ public class InterviewActivity extends AppCompatActivity {
                     ArList.l.put(str1, 1);
                     ArList.l.put(str2, 0);
                 }
-
-//                if (ArList.nam.size() != 0) {
-//
-//                    for (String a : ArList.nam) {
-//                        if (a.equals(btn1.getText().toString())) {
-//                            int index = ArList.nam.indexOf(a);
-//                            int value = ArList.count.indexOf(index);
-//                            value++;
-//                            ArList.count.set(index, value);
-//                        } else {
-//                            ArList.nam.add(btn1.getText().toString());
-//                            ArList.nam.add(btn2.getText().toString());
-//                            ArList.count.add(ArList.list.indexOf(btn1.getText().toString()), 1);
-//                            ArList.count.add(ArList.list.indexOf(btn2.getText().toString()), 0);
-//                        }
-//                    }
-//                } else {
-//                    ArList.nam.add(btn1.getText().toString());
-//                    ArList.nam.add(btn2.getText().toString());
-//                    ArList.count.add(ArList.nam.indexOf(btn1.getText().toString()), 1);
-//                    ArList.count.add(ArList.nam.indexOf(btn2.getText().toString()), 0);
-//                }
                 if(current<nn-1){
                     current++;
                     for(Integer[]anArr : lst.get(current)){
@@ -130,27 +109,6 @@ public class InterviewActivity extends AppCompatActivity {
                     ArList.l.put(str2, 1);
                 }
 
-//                if (ArList.nam.size() != 0) {
-//                    for (String a : ArList.nam) {
-//                        if (a.equals(btn2.getText().toString())) {
-//                            int index = ArList.nam.indexOf(a);
-//                            int value = ArList.count.indexOf(index);
-//                            value++;
-//                            ArList.count.set(index, value);
-//                        } else {
-//                            ArList.nam.add(btn1.getText().toString());
-//                            ArList.nam.add(btn2.getText().toString());
-//                            ArList.count.add(ArList.nam.indexOf(btn1.getText().toString()), 1);
-//                            ArList.count.add(ArList.nam.indexOf(btn2.getText().toString()), 0);
-//                        }
-//                    }
-//                }
-//                else {
-//                    ArList.nam.add(btn1.getText().toString());
-//                    ArList.nam.add(btn2.getText().toString());
-//                    ArList.count.add(ArList.nam.indexOf(btn1.getText().toString()), 0);
-//                    ArList.count.add(ArList.nam.indexOf(btn2.getText().toString()), 1);
-//                }
                 if(current<nn-1) {
                     current++;
                     for (Integer[] anArr : lst.get(current)) {
@@ -200,5 +158,13 @@ public class InterviewActivity extends AppCompatActivity {
         return count;
     }
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
