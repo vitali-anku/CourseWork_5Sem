@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> list = new ArrayList<>();
     ListView listView;
-    Button btn1, btn2;
+//    Button btn1, btn2;
     Adapter adapter;
 
     @Override

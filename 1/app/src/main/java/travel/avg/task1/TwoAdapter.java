@@ -42,10 +42,10 @@ public class TwoAdapter extends ArrayAdapter<Integer> {
         }
 
         TextView nameList = view.findViewById(R.id.nameList);
-        TextView countList = view.findViewById(R.id.countList);
+        //TextView countList = view.findViewById(R.id.countList);
         ProgressBar progressBar = view.findViewById(R.id.progress);
 
-        countList.setText(count.get(position).toString());
+        //countList.setText(count.get(position).toString());
         nameList.setText(values.get(position).toString());
         progressBar.setMax(Collections.max(count));
         progressBar.setProgress(count.get(position));

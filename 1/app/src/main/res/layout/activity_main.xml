@@ -3,29 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    tools:context=".MainActivity"
+    android:background="@color/basic">
+
         <ListView
             android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="104dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="19dp"
+            android:elevation="2dp"
+            android:dividerHeight="10dp"
+            android:divider="@color/basic"/>
+            <!--android:dividerHeight="100dp" />
+            android:background="#00000000"-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="33dp"
             android:layout_alignParentBottom="true">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="146dp"
+                android:layout_height="47dp"
                 android:layout_weight="1"
+                android:fontFamily="Roboto"
                 android:text="@string/add"
-                android:id="@+id/btn1"/>
+                android:id="@+id/btn1"
+                android:layout_marginRight="30dp"
+                android:textAppearance="@style/some_id_2"
+                android:background="@drawable/ic_rectangle"/>
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="146dp"
+                android:layout_height="47dp"
                 android:layout_weight="1"
+                android:background="@drawable/ic_rectangle"
+                android:fontFamily="Roboto"
                 android:text="@string/next"
+                android:textAppearance="@style/some_id_2"
                 android:id="@+id/btn2"
                 android:saveEnabled="true"/>
         </LinearLayout>

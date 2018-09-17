@@ -3,19 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/basic"
     tools:context=".LastActivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="470dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginTop="18dp"
         android:id="@+id/listStatistic"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:elevation="2dp"
+        android:dividerHeight="10dp"
+        android:divider="@color/basic"/>
 
     <Button
+        android:id="@+id/again"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/again"
         android:layout_alignParentBottom="true"
-        android:text="Снова"/>
+        android:layout_marginBottom="33dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="195dp"
+        android:background="@drawable/ic_rectangle"
+        android:textAppearance="@style/some_id_2"
+        android:text="@string/to_main"/>
 
 </RelativeLayout>
