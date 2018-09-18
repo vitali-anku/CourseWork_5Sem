@@ -23,31 +23,32 @@ public class InterviewActivity extends AppCompatActivity {
     int n = ArList.list.size();
 
     TextView show;
-    List<Integer[][]> lst = new ArrayList<>();
-    List<Integer> lda = new ArrayList<>();
 
     Button btn1, btn2;
-    int count = 0;
     int current = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interview);
-
-        for (String asd : ArList.list) {
-            lda.add(ArList.list.indexOf(asd));
+        if(savedInstanceState!=null){
+            current=savedInstanceState.getInt("current");
+        }else {
+            current=0;
+            ArList.lst.clear();
+            ArList.lda.clear();
+            ArList.NewMethod();
+            ArList.Victory();
+            ArList.Sort();
         }
 
         show = findViewById(R.id.number);
         btn1 = findViewById(R.id.test1);
         btn2 = findViewById(R.id.test2);
 
-        Victory();
-        Collections.shuffle(lst);
         final int nn = Count();
 
-        for(Integer[]anArr : lst.get(0)){
+        for(Integer[]anArr : ArList.lst.get(current)){
             SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
         }
 
@@ -75,7 +76,7 @@ public class InterviewActivity extends AppCompatActivity {
                 }
                 if(current<nn-1){
                     current++;
-                    for(Integer[]anArr : lst.get(current)){
+                    for(Integer[]anArr : ArList.lst.get(current)){
                         SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
                     }
                 }
@@ -111,7 +112,7 @@ public class InterviewActivity extends AppCompatActivity {
 
                 if(current<nn-1) {
                     current++;
-                    for (Integer[] anArr : lst.get(current)) {
+                    for (Integer[] anArr : ArList.lst.get(current)) {
                         SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
                     }
                 }
@@ -123,25 +124,16 @@ public class InterviewActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("current", current);
+    }
+
     public void SetButton(String str1, String str2, int count){
         btn1.setText(str1);
         btn2.setText(str2);
         show.setText("Вопрос " + (current+1) + " из " + count);
-    }
-
-    public void Victory() {
-
-        for (int i = 0; i < lda.size() - 1; i++) {
-            for (int j = i + 1; j <= lda.size() - 1; j++) {
-
-                Integer[][] asd = new Integer[1][2];
-                asd[0][0] = i;
-                asd[0][1] = j;
-
-                lst.add(asd);
-                count++;
-            }
-        }
     }
 
     public int Count(){

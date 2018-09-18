@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout_root">
+    android:id="@+id/layout_root"
+    android:focusable="true">
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="Введите слово"
         android:inputType="text"
-        android:id="@+id/word"/>
+        android:id="@+id/word"
+        android:focusable="true"/>
 
 </LinearLayout>

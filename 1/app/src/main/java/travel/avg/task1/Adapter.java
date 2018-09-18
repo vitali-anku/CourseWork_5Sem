@@ -46,8 +46,8 @@ public class Adapter extends ArrayAdapter<String> {
         }
 
         final TextView text = view.findViewById(R.id.edtext);
-        final Button b1 = view.findViewById(R.id.clr);
-        final Button b2 = view.findViewById(R.id.edt);
+        final ImageButton b1 = view.findViewById(R.id.clr);
+        final ImageButton b2 = view.findViewById(R.id.edt);
         text.setText(values.get(position));
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

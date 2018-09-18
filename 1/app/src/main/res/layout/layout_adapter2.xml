@@ -24,12 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginTop="11dp"
-            android:max="120"
-            android:progress="100"
             android:layout_marginLeft="21dp"
             android:layout_marginRight="21dp"
+            android:max="10"
+            android:progress="9"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:progressDrawable="@drawable/ic_line"
              />
 
     </LinearLayout>
