@@ -21,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -64,8 +65,8 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        final View btn1 = findViewById(R.id.view1);
-        final View btn2 = findViewById(R.id.view2);
+        final LinearLayout btn1 = findViewById(R.id.view1);
+        final LinearLayout btn2 = findViewById(R.id.view2);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity
                 opened = true;
             }
         });
+
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
