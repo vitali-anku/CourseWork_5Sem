@@ -17,18 +17,20 @@
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
             android:layout_marginTop="12dp"
-            android:textAppearance="@style/some_id_1" />
+            android:textAppearance="@style/some_id_1"/>
 
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="17dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="11dp"
+            android:max="120"
+            android:progress="100"
             android:layout_marginLeft="21dp"
             android:layout_marginRight="21dp"
-            android:layout_marginTop="11dp"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:background="@drawable/ic_line" />
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/ic_line"
+             />
 
     </LinearLayout>
 

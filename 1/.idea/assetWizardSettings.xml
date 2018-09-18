@@ -14,11 +14,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="3" />
-                            <entry key="outputName" value="ic_line" />
+                            <entry key="height" value="12" />
+                            <entry key="outputName" value="ic_vector_2" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="D:\stajirovka\Line.svg" />
-                            <entry key="width" value="242" />
+                            <entry key="sourceFile" value="D:\stajirovka\Vector_1_2.svg" />
+                            <entry key="width" value="7" />
                           </map>
                         </option>
                       </PersistentState>

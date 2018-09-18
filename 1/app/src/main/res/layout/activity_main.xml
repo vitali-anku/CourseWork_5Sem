@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/basic">
+    android:background="@color/basic"
+    tools:context=".MainActivity">
 
         <ListView
             android:id="@+id/listView1"
@@ -22,10 +22,9 @@
             android:background="#00000000"-->
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="322dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
-            android:layout_marginRight="19dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="33dp"
             android:layout_alignParentBottom="true">
             <Button
@@ -37,7 +36,10 @@
                 android:id="@+id/btn1"
                 android:layout_marginRight="30dp"
                 android:textAppearance="@style/some_id_2"
-                android:background="@drawable/ic_rectangle"/>
+                android:background="@drawable/ic_rectangle"
+                android:drawableRight="@drawable/ic_vector"
+                android:paddingLeft="28dp"
+                android:paddingRight="28dp"  />
 
             <Button
                 android:layout_width="146dp"
@@ -47,6 +49,9 @@
                 android:fontFamily="Roboto"
                 android:text="@string/next"
                 android:textAppearance="@style/some_id_2"
+                android:drawableRight="@drawable/ic_vector_2"
+                android:paddingRight="19dp"
+                android:paddingLeft="19dp"
                 android:id="@+id/btn2"
                 android:saveEnabled="true"/>
         </LinearLayout>

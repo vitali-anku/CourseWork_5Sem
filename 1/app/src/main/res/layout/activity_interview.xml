@@ -7,24 +7,24 @@
     android:background="@color/basic"
     tools:context=".InterviewActivity">
 
-        <TextView
-            android:layout_width="187dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="18dp"
-            android:textAppearance="@style/some_id_3"
-            android:id="@+id/number" />
+    <TextView
+        android:layout_width="187dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="18dp"
+        android:textAppearance="@style/some_id_3"
+        android:id="@+id/number" />
 
     <Button
         android:id="@+id/test1"
         android:layout_width="322dp"
         android:layout_height="45dp"
-        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/ic_rectangle_3"
         android:textAlignment="textStart"
-        android:paddingLeft="18dp"
-        android:paddingRight="117dp"
+        android:paddingStart="18dp"
+        android:paddingEnd="117dp"
         android:paddingTop="12dp"
         android:paddingBottom="13dp"
         android:textAppearance="@style/some_id_4"
@@ -39,8 +39,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/ic_rectangle_3"
             android:textAlignment="textStart"
-            android:paddingLeft="18dp"
-            android:paddingRight="117dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="117dp"
             android:paddingTop="12dp"
             android:paddingBottom="13dp"
             android:textAppearance="@style/some_id_4" />
