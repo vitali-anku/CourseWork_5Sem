@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
 //    Button btn1, btn2;
     Adapter adapter;
+    public boolean opened = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,38 +37,17 @@ public class MainActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
         }
 
+        if(savedInstanceState!=null){
+            opened = savedInstanceState.getBoolean("opened");
+            if(opened){
+                Open();
+            }
+        }
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(MainActivity.this);
-                View promptsView = li.inflate(R.layout.prompt, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Введите слово!")
-                        .setView(promptsView);
-                final EditText word = promptsView.findViewById(R.id.word);
-                builder.setCancelable(false)
-                        .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String str = word.getText().toString();
-                                if(!str.toString().equals("")) {
-                                    list.add(str);
-                                    ArList.list.add(str);
-                                    listView.setAdapter(adapter);
-                                }
-                                else {
-                                    Toast.makeText(getApplicationContext(), "Неверный ввод", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                alert.show();
+                Open();
+                opened = true;
             }
         });
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
@@ -84,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("opened", opened);
+    }
+
+
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
             return false;
@@ -91,6 +80,40 @@ public class MainActivity extends AppCompatActivity {
         else{
             return true;
         }
+    }
+
+    public void Open(){
+        LayoutInflater li = LayoutInflater.from(MainActivity.this);
+        View promptsView = li.inflate(R.layout.prompt, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Введите слово!")
+                .setView(promptsView);
+        final EditText word = promptsView.findViewById(R.id.word);
+        builder.setCancelable(false)
+                .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String str = word.getText().toString();
+                        if(!str.toString().equals("")) {
+                            list.add(str);
+                            ArList.list.add(str);
+                            listView.setAdapter(adapter);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Неверный ввод", Toast.LENGTH_SHORT).show();
+                        }
+                        opened = false;
+                    }
+                })
+                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        opened = false;
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     //    public void OnClick(View view){

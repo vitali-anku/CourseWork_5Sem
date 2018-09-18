@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/basic"
-    tools:context=".MainActivity">
-
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <ListView
             android:id="@+id/listView1"
             android:layout_width="match_parent"
@@ -18,8 +21,8 @@
             android:elevation="2dp"
             android:dividerHeight="10dp"
             android:divider="@color/basic"/>
-            <!--android:dividerHeight="100dp" />
-            android:background="#00000000"-->
+        <!--android:dividerHeight="100dp" />
+        android:background="#00000000"-->
 
         <LinearLayout
             android:layout_width="322dp"
@@ -55,4 +58,5 @@
                 android:id="@+id/btn2"
                 android:saveEnabled="true"/>
         </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
