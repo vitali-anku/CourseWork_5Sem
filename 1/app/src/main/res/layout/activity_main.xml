@@ -23,9 +23,11 @@
         app:headerLayout="@layout/nav_header_first"
         app:menu="@menu/activity_first_drawer" />
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ListView
             android:id="@+id/listView1"
             android:layout_width="match_parent"
@@ -33,13 +35,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="74dp"
             android:layout_marginBottom="104dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="19dp"
-            android:elevation="2dp"
             android:dividerHeight="10dp"
-            android:divider="@color/basic"/>
-        <!--android:dividerHeight="100dp" />
-        android:background="#00000000"-->
+            android:divider="@color/basic"
+            android:padding="2dp"
+            android:elevation="1dp"/>
 
         <LinearLayout
             android:layout_width="322dp"
@@ -47,6 +48,33 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="33dp"
             android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="146dp"
+                android:layout_height="47dp"
+                android:orientation="horizontal"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/ic_rectangle"
+                android:id="@+id/view1">
+
+                <TextView
+                    android:layout_width="74dp"
+                    android:layout_height="19dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:textAppearance="@style/some_id_2"
+                    android:text="@string/add"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginBottom="17dp"
+                    android:src="@drawable/ic_vector"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="146dp"
@@ -69,35 +97,9 @@
                     android:layout_width="7dp"
                     android:layout_height="12dp"
                     android:layout_marginLeft="6dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="19dp"
                     android:layout_marginBottom="17dp"
                     android:src="@drawable/ic_vector_2"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="146dp"
-                android:layout_height="47dp"
-                android:orientation="horizontal"
-                android:background="@drawable/ic_rectangle"
-                android:id="@+id/view1">
-
-                <TextView
-                    android:layout_width="74dp"
-                    android:layout_height="19dp"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginBottom="14dp"
-                    android:textAppearance="@style/some_id_2"
-                    android:text="@string/add"/>
-
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="17dp"
-                    android:src="@drawable/ic_vector"/>
 
             </LinearLayout>
 

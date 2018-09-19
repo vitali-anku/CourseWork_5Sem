@@ -12,6 +12,8 @@
         android:hint="Введите слово"
         android:inputType="text"
         android:id="@+id/word"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
         android:focusable="true"/>
 
 </LinearLayout>

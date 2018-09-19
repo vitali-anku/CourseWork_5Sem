@@ -5,32 +5,43 @@
     android:background="@drawable/ic_rectangle_3"
     android:elevation="2dp" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/nameList"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
             android:layout_marginTop="12dp"
-            android:textAppearance="@style/some_id_1"/>
+            android:textAppearance="@style/some_id_1"
+
+            android:text="sjbdjshbdjksbfshb"
+
+            />
 
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="43dp"
             android:layout_marginLeft="21dp"
-            android:layout_marginRight="21dp"
-            android:max="10"
-            android:progress="9"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-             />
+            android:layout_marginRight="59dp"
+            android:progress="90"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="18dp"
+            android:layout_height="20dp"
+            android:textAppearance="@style/count"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="12dp"
+            android:id="@+id/count"
+            />
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

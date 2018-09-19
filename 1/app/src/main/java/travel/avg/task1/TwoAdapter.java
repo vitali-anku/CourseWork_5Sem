@@ -43,14 +43,14 @@ public class TwoAdapter extends ArrayAdapter<Integer> {
         }
 
         TextView nameList = view.findViewById(R.id.nameList);
-        //TextView countList = view.findViewById(R.id.countList);
+        TextView countList = view.findViewById(R.id.count);
         ProgressBar progressBar = view.findViewById(R.id.progress);
 
 
         progressBar.getProgressDrawable().setColorFilter(
                 Color.rgb(21, 101, 192), android.graphics.PorterDuff.Mode.SRC_IN);
 
-        //countList.setText(count.get(position).toString());
+        countList.setText(count.get(position).toString());
         nameList.setText(values.get(position).toString());
         progressBar.setMax(Collections.max(count));
         progressBar.setProgress(count.get(position));

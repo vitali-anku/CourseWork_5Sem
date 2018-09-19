@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +66,7 @@ public class Adapter extends ArrayAdapter<String> {
                 builder.setTitle("Введите слово!")
                         .setView(promptsView);
                 final EditText word = promptsView.findViewById(R.id.word);
+                word.setText(values.get(position));
                 builder.setCancelable(false)
                         .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
                             @Override
@@ -80,6 +82,7 @@ public class Adapter extends ArrayAdapter<String> {
                             }
                         });
                 AlertDialog alert = builder.create();
+                alert.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 alert.show();
             }
         });
