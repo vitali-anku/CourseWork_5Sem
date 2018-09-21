@@ -26,6 +26,7 @@ public class ArList {
             }
         }
     }
+
     public static void NewMethod(){
         for (String asd : list) {
             lda.add(list.indexOf(asd));

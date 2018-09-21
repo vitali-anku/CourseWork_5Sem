@@ -42,16 +42,16 @@ public class LastActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout3);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view3);
         navigationView.setNavigationItemSelectedListener(this);
 
         listView = findViewById(R.id.listStatistic);
@@ -73,6 +73,8 @@ public class LastActivity extends AppCompatActivity
                 ArList.list.clear();
                 ArList.l.clear();
                 ArList.count.clear();
+                ArList.lda.clear();
+                ArList.lst.clear();
 
                 Intent intent = new Intent(LastActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -99,7 +101,7 @@ public class LastActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout3);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -113,21 +115,21 @@ public class LastActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        switch (id){
+            case R.id.home:
+                ArList.l.clear();
+                ArList.count.clear();
+                ArList.lst.clear();
+                ArList.lda.clear();
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+                Intent intent = new Intent(LastActivity.this, MainActivity.class);
+                startActivity(intent);
+            break;
+            case R.id.nav_send:
+                break;
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout3);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

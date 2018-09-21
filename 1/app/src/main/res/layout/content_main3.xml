@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".LastActivity"
+    tools:showIn="@layout/activity_last">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listStatistic"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="104dp"/>
+
+    <Button
+        android:id="@+id/again"
+        android:layout_width="146dp"
+        android:layout_height="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="33dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="195dp"
+        android:background="@drawable/ic_rectangle"
+        android:textAppearance="@style/some_id_2"
+        android:text="@string/to_main"/>
+
+</RelativeLayout>

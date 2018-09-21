@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".InterviewActivity"
+    tools:showIn="@layout/app_bar_first2">
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="18dp"
+        android:textAppearance="@style/some_id_3"/>
+
+    <Button
+        android:id="@+id/test1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_rectangle_3"
+        android:paddingBottom="13dp"
+        android:paddingEnd="117dp"
+        android:paddingStart="18dp"
+        android:paddingTop="12dp"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/some_id_4" />
+
+    <Button
+        android:id="@+id/test2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_rectangle_3"
+        android:paddingBottom="13dp"
+        android:paddingEnd="117dp"
+        android:paddingStart="18dp"
+        android:paddingTop="12dp"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/some_id_4" />
+
+</LinearLayout>
