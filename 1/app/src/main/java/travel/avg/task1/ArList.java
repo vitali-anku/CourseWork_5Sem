@@ -2,6 +2,8 @@ package travel.avg.task1;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,7 @@ public class ArList {
     public static Map<String, Integer> l = new HashMap<>();
     public static List<Integer[][]> lst = new ArrayList<>();
     public static List<Integer> lda = new ArrayList<>();
+    public static Map<String, Map<String, Integer>>  dateList = new HashMap<>();
     //public static ArrayList<Map<String, Integer>> count = new ArrayList<>();
     public static void Victory(){
         for (int i = 0; i < lda.size() - 1; i++) {

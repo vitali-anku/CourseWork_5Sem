@@ -13,11 +13,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -25,6 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.TreeMap;
 
 public class LastActivity extends AppCompatActivity
@@ -70,6 +75,18 @@ public class LastActivity extends AppCompatActivity
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date presentTime_Date = Calendar.getInstance().getTime();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM HH:mm:ss");
+                dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+//                Calendar calendar = Calendar.getInstance();
+//                SimpleDateFormat mdformat = new SimpleDateFormat("MM.dd ");
+//                String strDate = mdformat.format(calendar.getTime()) + calendar.getTime();
+                ArList.dateList.put(dateFormat.format(presentTime_Date), sortedMap);
+                for (Object name : ArList.dateList.keySet()) {
+                    Toast.makeText(getApplicationContext(), name.toString().substring(0, name.toString().length()-3) + "|||||" + ArList.dateList.get(name), Toast.LENGTH_SHORT).show();
+                }
+
                 ArList.list.clear();
                 ArList.l.clear();
                 ArList.count.clear();
