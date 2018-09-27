@@ -1,4 +1,4 @@
-package travel.avg.task1;
+package travel.avg.task1.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import travel.avg.task1.DateTimeListActivity;
+import travel.avg.task1.R;
 
 public class HistoryAdapter extends ArrayAdapter<String> {
     Context context;
@@ -37,10 +40,9 @@ public class HistoryAdapter extends ArrayAdapter<String> {
         final String str = values.get(position);
 
         TextView date = view.findViewById(R.id.dateHistory);
-        TextView time = view.findViewById(R.id.timeHistory);
 
-        date.setText(str.subSequence(0, 5));
-        time.setText(str.substring(6, str.length()-3));
+        date.setText(str);
+        //time.setText(str.substring(6, str.length()-3));
 
         view.findViewById(R.id.qwerty).setOnClickListener(new View.OnClickListener() {
             @Override

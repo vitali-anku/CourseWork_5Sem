@@ -137,6 +137,7 @@ public class InterviewActivity extends AppCompatActivity
                     }
                 }
                 else if(current == nn-1){
+
                     Intent intent2 = new Intent(InterviewActivity.this, LastActivity.class);
                     startActivity(intent2);
                 }
@@ -207,7 +208,8 @@ public class InterviewActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
             case R.id.nav_send:
-
+                Intent intent1 = new Intent(this, HistoryListActivity.class);
+                startActivity(intent1);
                 break;
         }
 

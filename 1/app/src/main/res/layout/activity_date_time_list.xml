@@ -6,14 +6,17 @@
     tools:context=".DateTimeListActivity"
     android:background="@color/basic">
 
+    <include
+        layout="@layout/app_bar_back" />
+
     <ListView
         android:id="@+id/timelist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="19dp"
         android:layout_marginRight="19dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="33dp"
+        android:layout_marginTop="74dp"
         android:divider="@color/basic"/>
 
 </android.support.constraint.ConstraintLayout>

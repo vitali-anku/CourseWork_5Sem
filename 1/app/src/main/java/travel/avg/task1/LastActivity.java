@@ -1,36 +1,33 @@
 package travel.avg.task1;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TimeZone;
-import java.util.TreeMap;
+
+import travel.avg.task1.Adapters.TwoAdapter;
+import travel.avg.task1.DB.DBMethods;
 
 public class LastActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -40,7 +37,6 @@ public class LastActivity extends AppCompatActivity
     ArrayList<String> list1 = new ArrayList<>();
     ArrayList<Integer> list2 = new ArrayList<>();
     Map<String, Integer> sortedMap = new LinkedHashMap<>();
-//    private Map<String, Integer> myymap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,20 +68,19 @@ public class LastActivity extends AppCompatActivity
         TwoAdapter adapter = new TwoAdapter(this, list2, list1);
         listView.setAdapter(adapter);
 
+        Date presentTime_Date = Calendar.getInstance().getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+3"));
+
+        ArList.dateList.put(dateFormat.format(presentTime_Date), sortedMap);
+        DBMethods.saveMap(this, ArList.dateList);
+
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date presentTime_Date = Calendar.getInstance().getTime();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM HH:mm:ss");
-                dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-//                Calendar calendar = Calendar.getInstance();
-//                SimpleDateFormat mdformat = new SimpleDateFormat("MM.dd ");
-//                String strDate = mdformat.format(calendar.getTime()) + calendar.getTime();
-                ArList.dateList.put(dateFormat.format(presentTime_Date), sortedMap);
-                for (Object name : ArList.dateList.keySet()) {
-                    Toast.makeText(getApplicationContext(), name.toString().substring(0, name.toString().length()-3) + "|||||" + ArList.dateList.get(name), Toast.LENGTH_SHORT).show();
-                }
+                ArList.dateList.clear();
 
                 ArList.list.clear();
                 ArList.l.clear();
@@ -143,6 +138,9 @@ public class LastActivity extends AppCompatActivity
                 startActivity(intent);
             break;
             case R.id.nav_send:
+
+                Intent intent1 = new Intent(this, HistoryListActivity.class);
+                startActivity(intent1);
                 break;
         }
 
@@ -150,6 +148,17 @@ public class LastActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+//        if (pSharedPref != null){
+//            JSONObject jsonObject = new JSONObject(inputMap);
+//            String jsonString = jsonObject.toString();
+//            SharedPreferences.Editor editor = pSharedPref.edit();
+//            editor.remove(key).commit();
+//            editor.putString(key, jsonString);
+//            editor.commit();
+//        }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

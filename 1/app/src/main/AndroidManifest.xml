@@ -31,7 +31,8 @@
             android:name=".HistoryListActivity"
             android:label="@string/history"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DateTimeListActivity"></activity>
+        <activity android:name=".DateTimeListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
