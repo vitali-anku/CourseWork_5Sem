@@ -1,6 +1,7 @@
 package travel.avg.task1.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -16,14 +17,16 @@ import travel.avg.task1.R;
 public class WordAdapter extends ArrayAdapter<String> {
     Context context;
     ArrayList<String> values;
-    ArrayList<Integer> count;
+    ArrayList<String> count;
+    Class<?> activity;
 
-    public WordAdapter(Context context, ArrayList<String> values, ArrayList<Integer> count) {
+    public WordAdapter(Context context, ArrayList<String> values, ArrayList<String> count, Class<?> activity) {
         super(context, R.layout.word_layout_adapter, values);
 
         this.context = context;
         this.values = values;
         this.count = count;
+        this.activity = activity;
     }
 
     @NonNull
@@ -36,11 +39,20 @@ public class WordAdapter extends ArrayAdapter<String> {
             view = inflater.inflate(R.layout.word_layout_adapter, parent, false);
         }
 
-        TextView nameword = view.findViewById(R.id.nameword);
+        final TextView nameword = view.findViewById(R.id.nameword);
         TextView countword = view.findViewById(R.id.countword);
 
         nameword.setText(values.get(position).toString());
         countword.setText(count.get(position).toString());
+
+        view.findViewById(R.id.qwerty1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, activity);
+                intent.putExtra("key", values.get(position));
+                context.startActivity(intent);
+            }
+        });
 
         return view;
     }

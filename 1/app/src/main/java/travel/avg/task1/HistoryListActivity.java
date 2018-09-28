@@ -30,7 +30,7 @@ public class HistoryListActivity extends AppCompatActivity
 
     ArrayList<String> list1 = new ArrayList<>();
     ArrayList<String> list2_1 = new ArrayList<>();
-    ArrayList<Integer> list2_2 = new ArrayList<>();
+    ArrayList<String> list2_2 = new ArrayList<>();
     ListView listView1, listView2;
 
     @Override
@@ -87,9 +87,10 @@ public class HistoryListActivity extends AppCompatActivity
         if(map.size()!=0){
             for (Object word : map.keySet()) {
                 list2_1.add(word.toString());
-                list2_2.add(map.get(word));
+                list2_2.add(map.get(word).toString());
             }
-            WordAdapter wordAdapter = new WordAdapter(this, list2_1, list2_2);
+
+            WordAdapter wordAdapter = new WordAdapter(this, list2_1, list2_2, WordActivity.class);
             listView2.setAdapter(wordAdapter);
         }
     }

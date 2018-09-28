@@ -117,4 +117,47 @@ public class DBMethods {
 
         return firstMap;
     }
+    public static Map<String, String> ouptupWordCountMax(Context context, String word){
+        List<String> dateList = new ArrayList<>();
+        Map<String, String> output = new HashMap<>();
+        DBHelper dbHelper = new DBHelper(context);
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+
+        try{
+            String query = "Select * from List where name = '" + word.toString() + "'";
+            Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+            if(cursor.moveToFirst()){
+                int int1 = cursor.getColumnIndex("date");
+                do {
+                    dateList.add(cursor.getString(int1));
+                }while (cursor.moveToNext());
+            }
+
+            cursor.close();
+
+            for (Object date: dateList) {
+                String query1 = "Select max(count) from List where date = '" + date.toString() + "'";
+                String query2 = "Select count from List where date = '" + date.toString() + "' and name = '" + word.toString() + "'";
+                Cursor cursor1 = sqLiteDatabase.rawQuery(query1,null);
+                Cursor cursor2 = sqLiteDatabase.rawQuery(query2, null);
+                String count = null;
+                if(cursor2.moveToFirst()){
+                    int int1 = cursor2.getColumnIndex("count");
+                    do{
+                        count = cursor2.getString(int1);
+                    }while (cursor2.moveToNext());
+                }
+                cursor2.close();
+
+                if(cursor1.moveToFirst()){
+                    Integer int1 = cursor1.getInt(0);
+                    output.put(date.toString(), count + "/" + int1);
+                }
+                cursor1.close();
+            }
+        }
+        catch (Exception e){}
+
+        return output;
+    }
 }
