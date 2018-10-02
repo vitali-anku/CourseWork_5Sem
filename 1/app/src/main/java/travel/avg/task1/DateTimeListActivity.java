@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import travel.avg.task1.Adapters.TwoAdapter;
+import travel.avg.task1.Adapters.SecondAdapter;
 import travel.avg.task1.DB.DBMethods;
 
 public class DateTimeListActivity extends AppCompatActivity {
@@ -33,12 +33,12 @@ public class DateTimeListActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String key = bundle.getString("key");
 
-        firstMap.putAll(DBMethods.outputMap1(this, key));
+        firstMap.putAll(DBMethods.outputAll(this, key));
         Sort();
 
         Toolbar tolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(tolbar);
-        //str.substring(0,str.length()-3)
+
         getSupportActionBar().setTitle(key);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -52,7 +52,7 @@ public class DateTimeListActivity extends AppCompatActivity {
         }
 
 
-        TwoAdapter adapter = new TwoAdapter(this, list2, list1);
+        SecondAdapter adapter = new SecondAdapter(this, list2, list1);
         listView.setAdapter(adapter);
 
     }
@@ -69,7 +69,6 @@ public class DateTimeListActivity extends AppCompatActivity {
         });
 
         //convert sortedMap back to Map
-
         for (Map.Entry<String, Integer> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
@@ -80,8 +79,6 @@ public class DateTimeListActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id==android.R.id.home){
             finish();
-//            Intent intent = new Intent(this, HistoryListActivity.class);
-//            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

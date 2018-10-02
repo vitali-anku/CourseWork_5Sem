@@ -14,14 +14,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import travel.avg.task1.Adapters.TwoAdapter;
+import travel.avg.task1.Adapters.SecondAdapter;
 import travel.avg.task1.DB.DBMethods;
 
 public class WordDateActivity extends AppCompatActivity {
 
     ListView listView;
+
     ArrayList<String> list1 = new ArrayList<>();
     ArrayList<Integer> list2 = new ArrayList<>();
+
     Map<String, Integer> sortedMap = new LinkedHashMap<>();
     Map<String, Integer> firstMap = new LinkedHashMap<>();
 
@@ -33,12 +35,12 @@ public class WordDateActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String key = bundle.getString("key");
 
-        firstMap.putAll(DBMethods.outputMap1(this, key));
-        Sort();
+        firstMap.putAll(DBMethods.outputAll(this, key));
+        sortedMap.putAll(Sort());
 
         Toolbar tolbar = findViewById(R.id.toolbar_back);
         setSupportActionBar(tolbar);
-        //str.substring(0,str.length()-3)
+
         getSupportActionBar().setTitle(key);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -51,15 +53,13 @@ public class WordDateActivity extends AppCompatActivity {
         }
 
 
-        TwoAdapter adapter = new TwoAdapter(this, list2, list1);
+        SecondAdapter adapter = new SecondAdapter(this, list2, list1);
         listView.setAdapter(adapter);
-
-        //map.putAll(DBMethods.ouptupWordCountMax(this, key));
-
     }
 
-    public void Sort(){
+    public Map<String, Integer> Sort(){
         //convert map to a List
+        Map<String, Integer> sorted = new LinkedHashMap<>();
         List<Map.Entry<String, Integer>> list = new LinkedList<>(firstMap.entrySet());
 
         //sorting the list with a comparator
@@ -72,8 +72,9 @@ public class WordDateActivity extends AppCompatActivity {
         //convert sortedMap back to Map
 
         for (Map.Entry<String, Integer> entry : list) {
-            sortedMap.put(entry.getKey(), entry.getValue());
+            sorted.put(entry.getKey(), entry.getValue());
         }
+        return sorted;
     }
 
     @Override

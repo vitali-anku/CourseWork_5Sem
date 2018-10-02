@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".InterviewActivity"
-    tools:showIn="@layout/app_bar_first2">
+    tools:showIn="@layout/app_bar_interview">
 
     <TextView
         android:id="@+id/number"

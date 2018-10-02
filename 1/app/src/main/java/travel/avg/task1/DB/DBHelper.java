@@ -42,10 +42,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (rowID == -1) {
             Log.d("Input Database: ","Sorry, such ID already exists");
-
         } else {
             Log.d("Input Database: " , "row student student inserted, ID = " + rowID);
-            // toast("row inserted, ID = " + rowID);
         }
         cv.clear();
     }

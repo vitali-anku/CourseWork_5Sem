@@ -26,16 +26,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
-import travel.avg.task1.Adapters.TwoAdapter;
+import travel.avg.task1.Adapters.SecondAdapter;
 import travel.avg.task1.DB.DBMethods;
 
-public class LastActivity extends AppCompatActivity
+public class StatisticActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     Button btn;
     ListView listView;
+
     ArrayList<String> list1 = new ArrayList<>();
     ArrayList<Integer> list2 = new ArrayList<>();
+
     Map<String, Integer> sortedMap = new LinkedHashMap<>();
 
     @Override
@@ -43,6 +45,7 @@ public class LastActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last);
 
+        //region toolbar, drawer, navigationView
         Toolbar toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
 
@@ -54,18 +57,19 @@ public class LastActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view3);
         navigationView.setNavigationItemSelectedListener(this);
+        //endregion
 
         listView = findViewById(R.id.listStatistic);
         btn = findViewById(R.id.again);
 
-        Sort();
+        sortedMap.putAll(Sort());
 
         for (Object name : sortedMap.keySet()) {
             list1.add(name.toString());
-            list2.add(ArList.l.get(name));
+            list2.add(ArList.interviewList.get(name));
         }
 
-        TwoAdapter adapter = new TwoAdapter(this, list2, list1);
+        SecondAdapter adapter = new SecondAdapter(this, list2, list1);
         listView.setAdapter(adapter);
 
         Date presentTime_Date = Calendar.getInstance().getTime();
@@ -75,27 +79,29 @@ public class LastActivity extends AppCompatActivity
         ArList.dateList.put(dateFormat.format(presentTime_Date), sortedMap);
         DBMethods.saveMap(this, ArList.dateList);
 
-
+        //region btn
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 ArList.dateList.clear();
-
                 ArList.list.clear();
-                ArList.l.clear();
+                ArList.interviewList.clear();
                 ArList.count.clear();
-                ArList.lda.clear();
-                ArList.lst.clear();
+                ArList.listIndex.clear();
+                ArList.listVictory.clear();
 
-                Intent intent = new Intent(LastActivity.this, MainActivity.class);
+                Intent intent = new Intent(StatisticActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+        //endregion
     }
-    public void Sort(){
+
+    private Map<String, Integer> Sort(){
         //convert map to a List
-        List<Map.Entry<String, Integer>> list = new LinkedList<>(ArList.l.entrySet());
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(ArList.interviewList.entrySet());
 
         //sorting the list with a comparator
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
@@ -105,10 +111,11 @@ public class LastActivity extends AppCompatActivity
         });
 
         //convert sortedMap back to Map
-
         for (Map.Entry<String, Integer> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
+
+        return sortedMap;
     }
 
     @Override
@@ -129,15 +136,19 @@ public class LastActivity extends AppCompatActivity
 
         switch (id){
             case R.id.home:
-                ArList.l.clear();
+                ArList.interviewList.clear();
                 ArList.count.clear();
-                ArList.lst.clear();
-                ArList.lda.clear();
+                ArList.listVictory.clear();
+                ArList.listIndex.clear();
 
-                Intent intent = new Intent(LastActivity.this, MainActivity.class);
+                Intent intent = new Intent(StatisticActivity.this, MainActivity.class);
                 startActivity(intent);
             break;
             case R.id.nav_send:
+                ArList.interviewList.clear();
+                ArList.count.clear();
+                ArList.listVictory.clear();
+                ArList.listIndex.clear();
 
                 Intent intent1 = new Intent(this, HistoryListActivity.class);
                 startActivity(intent1);
@@ -148,17 +159,6 @@ public class LastActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
-//        if (pSharedPref != null){
-//            JSONObject jsonObject = new JSONObject(inputMap);
-//            String jsonString = jsonObject.toString();
-//            SharedPreferences.Editor editor = pSharedPref.edit();
-//            editor.remove(key).commit();
-//            editor.putString(key, jsonString);
-//            editor.commit();
-//        }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

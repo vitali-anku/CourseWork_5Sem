@@ -20,6 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_first_hisroty" />
+    <include layout="@layout/content_hisroty" />
 
 </android.support.design.widget.CoordinatorLayout>

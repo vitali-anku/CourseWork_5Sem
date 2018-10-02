@@ -21,7 +21,7 @@ public class HistoryAdapter extends ArrayAdapter<String> {
 
 
     public HistoryAdapter(Context context, ArrayList<String> values) {
-        super(context, R.layout.layout_adapter3, values);
+        super(context, R.layout.layout_history_adapter, values);
 
         this.context = context;
         this.values = values;
@@ -34,7 +34,7 @@ public class HistoryAdapter extends ArrayAdapter<String> {
         if (view == null) {
             LayoutInflater inflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.layout_adapter3, parent, false);
+            view = inflater.inflate(R.layout.layout_history_adapter, parent, false);
         }
 
         final String str = values.get(position);
@@ -42,7 +42,6 @@ public class HistoryAdapter extends ArrayAdapter<String> {
         TextView date = view.findViewById(R.id.dateHistory);
 
         date.setText(str);
-        //time.setText(str.substring(6, str.length()-3));
 
         view.findViewById(R.id.qwerty).setOnClickListener(new View.OnClickListener() {
             @Override

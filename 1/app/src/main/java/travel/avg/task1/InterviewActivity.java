@@ -13,16 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class InterviewActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -55,9 +45,9 @@ public class InterviewActivity extends AppCompatActivity
             current=savedInstanceState.getInt("current");
         }else {
             current=0;
-            ArList.lst.clear();
-            ArList.lda.clear();
-            ArList.NewMethod();
+            ArList.listVictory.clear();
+            ArList.listIndex.clear();
+            ArList.listIndexOf();
             ArList.Victory();
             ArList.Sort();
         }
@@ -66,10 +56,10 @@ public class InterviewActivity extends AppCompatActivity
         btn1 = findViewById(R.id.test1);
         btn2 = findViewById(R.id.test2);
 
-        final int nn = Count();
+        final int count = Count();
 
-        for(Integer[]anArr : ArList.lst.get(current)){
-            SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
+        for(Integer[]anArr : ArList.listVictory.get(current)){
+            SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), count);
         }
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -77,33 +67,7 @@ public class InterviewActivity extends AppCompatActivity
             public void onClick(View v) {
                 String str1 = btn1.getText().toString();
                 String str2 = btn2.getText().toString();
-                if(ArList.l.size() != 0){
-                    if(!ArList.l.containsKey(str1)){
-                        ArList.l.put(str1, 1);
-                    }
-                    else {
-                        int value = ArList.l.get(str1);
-                        value++;
-                        ArList.l.put(str1, value);
-                    }
-                    if(!ArList.l.containsKey(str2)){
-                        ArList.l.put(str2, 0);
-                    }
-                }
-                else {
-                    ArList.l.put(str1, 1);
-                    ArList.l.put(str2, 0);
-                }
-                if(current<nn-1){
-                    current++;
-                    for(Integer[]anArr : ArList.lst.get(current)){
-                        SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
-                    }
-                }
-                else if(current==nn-1){
-                    Intent intent1 = new Intent(InterviewActivity.this, LastActivity.class);
-                    startActivity(intent1);
-                }
+                Next(str1, str2, count);
             }
         });
 
@@ -112,37 +76,39 @@ public class InterviewActivity extends AppCompatActivity
             public void onClick(View v) {
                 String str1 = btn1.getText().toString();
                 String str2 = btn2.getText().toString();
-                if(ArList.l.size() != 0){
-                    if(!ArList.l.containsKey(str2)){
-                        ArList.l.put(str2, 1);
-                    }
-                    else {
-                        int value = ArList.l.get(str2);
-                        value++;
-                        ArList.l.put(str2, value);
-                    }
-                    if(!ArList.l.containsKey(str1)){
-                        ArList.l.put(str1, 0);
-                    }
-                }
-                else {
-                    ArList.l.put(str1, 0);
-                    ArList.l.put(str2, 1);
-                }
-
-                if(current<nn-1) {
-                    current++;
-                    for (Integer[] anArr : ArList.lst.get(current)) {
-                        SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
-                    }
-                }
-                else if(current == nn-1){
-
-                    Intent intent2 = new Intent(InterviewActivity.this, LastActivity.class);
-                    startActivity(intent2);
-                }
+                Next(str2, str1, count);
             }
         });
+    }
+
+    private void Next(String str1, String str2, final int nn){
+        if(ArList.interviewList.size() != 0){
+            if(!ArList.interviewList.containsKey(str1)){
+                ArList.interviewList.put(str1, 1);
+            }
+            else {
+                int value = ArList.interviewList.get(str1);
+                value++;
+                ArList.interviewList.put(str1, value);
+            }
+            if(!ArList.interviewList.containsKey(str2)){
+                ArList.interviewList.put(str2, 0);
+            }
+        }
+        else {
+            ArList.interviewList.put(str1, 1);
+            ArList.interviewList.put(str2, 0);
+        }
+        if(current<nn-1){
+            current++;
+            for(Integer[]anArr : ArList.listVictory.get(current)){
+                SetButton(ArList.list.get(anArr[0]), ArList.list.get(anArr[1]), nn);
+            }
+        }
+        else if(current==nn-1){
+            Intent intent1 = new Intent(InterviewActivity.this, StatisticActivity.class);
+            startActivity(intent1);
+        }
     }
 
     @Override
@@ -181,28 +147,16 @@ public class InterviewActivity extends AppCompatActivity
         }
     }
 
-//            case R.id.home:
-//                ArList.l.clear();
-//                ArList.count.clear();
-//                ArList.lst.clear();
-//                ArList.lda.clear();
-//
-//                Intent intent = new Intent(InterviewActivity.this, MainActivity.class);
-//                startActivity(intent);
-//                break;
-//            case  R.id.nav_send:
-//                break;
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
             case R.id.home:
-                ArList.l.clear();
+                ArList.interviewList.clear();
                 ArList.count.clear();
-                ArList.lst.clear();
-                ArList.lda.clear();
+                ArList.listVictory.clear();
+                ArList.listIndex.clear();
 
                 Intent intent = new Intent(InterviewActivity.this, MainActivity.class);
                 startActivity(intent);

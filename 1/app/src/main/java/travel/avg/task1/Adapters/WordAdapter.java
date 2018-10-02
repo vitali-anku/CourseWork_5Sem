@@ -21,7 +21,7 @@ public class WordAdapter extends ArrayAdapter<String> {
     Class<?> activity;
 
     public WordAdapter(Context context, ArrayList<String> values, ArrayList<String> count, Class<?> activity) {
-        super(context, R.layout.word_layout_adapter, values);
+        super(context, R.layout.layout_word_adapter, values);
 
         this.context = context;
         this.values = values;
@@ -36,7 +36,7 @@ public class WordAdapter extends ArrayAdapter<String> {
         if (view == null) {
             LayoutInflater inflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.word_layout_adapter, parent, false);
+            view = inflater.inflate(R.layout.layout_word_adapter, parent, false);
         }
 
         final TextView nameword = view.findViewById(R.id.nameword);

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DBMethods {
-    public static ArrayList<String> outputMap(Context context){
+    public static ArrayList<String> outputDate(Context context){
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ArrayList<String> list = new ArrayList<>();
@@ -54,7 +54,7 @@ public class DBMethods {
             }
         }
     }
-    public static Map<String, Integer> WordCount(Context context){
+    public static Map<String, Integer> wordCount(Context context){
         Map<String, Integer> wordcount = new HashMap<>();
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
@@ -88,7 +88,7 @@ public class DBMethods {
 
         return wordcount;
     }
-    public static  Map<String, Integer> outputMap1(Context context, String date){
+    public static  Map<String, Integer> outputAll(Context context, String date){
         Map<String, Integer> firstMap = new LinkedHashMap<>();
         DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();

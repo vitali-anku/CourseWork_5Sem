@@ -26,7 +26,7 @@ public class Adapter extends ArrayAdapter<String> {
 
 
     public Adapter(Context context, ArrayList<String> states) {
-        super(context, R.layout.layout_adapter1, states);
+        super(context, R.layout.layout_adapter, states);
 
         this.context = context;
         this.values = states;
@@ -39,13 +39,14 @@ public class Adapter extends ArrayAdapter<String> {
         if(view == null){
             LayoutInflater inflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.layout_adapter1, parent, false);
+            view = inflater.inflate(R.layout.layout_adapter, parent, false);
         }
 
         final TextView text = view.findViewById(R.id.edtext);
         final ImageButton b1 = view.findViewById(R.id.clr);
         final ImageButton b2 = view.findViewById(R.id.edt);
         text.setText(values.get(position));
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +54,7 @@ public class Adapter extends ArrayAdapter<String> {
                 adapter.notifyDataSetChanged();
             }
         });
+
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +84,7 @@ public class Adapter extends ArrayAdapter<String> {
                 alert.show();
             }
         });
+
         return view;
     }
 }

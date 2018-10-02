@@ -17,14 +17,13 @@ import java.util.List;
 
 import travel.avg.task1.R;
 
-public class TwoAdapter extends ArrayAdapter<Integer> {
+public class SecondAdapter extends ArrayAdapter<Integer> {
     Context context;
     List<String> values;
     ArrayList<Integer> count;
-    int max;
 
-    public TwoAdapter(Context context, ArrayList<Integer> count, ArrayList<String> values) {
-        super(context, R.layout.layout_adapter2, count);
+    public SecondAdapter(Context context, ArrayList<Integer> count, ArrayList<String> values) {
+        super(context, R.layout.layout_second_adapter, count);
 
         this.context = context;
         this.count = count;
@@ -38,7 +37,7 @@ public class TwoAdapter extends ArrayAdapter<Integer> {
         if (view == null) {
             LayoutInflater inflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.layout_adapter2, parent, false);
+            view = inflater.inflate(R.layout.layout_second_adapter, parent, false);
         }
 
         TextView nameList = view.findViewById(R.id.nameList);
@@ -51,6 +50,7 @@ public class TwoAdapter extends ArrayAdapter<Integer> {
 
         countList.setText(count.get(position).toString());
         nameList.setText(values.get(position).toString());
+
         progressBar.setMax(Collections.max(count));
         progressBar.setProgress(count.get(position));
 

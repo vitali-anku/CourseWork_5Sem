@@ -28,9 +28,10 @@ import travel.avg.task1.DB.DBMethods;
 public class HistoryListActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    ArrayList<String> list1 = new ArrayList<>();
-    ArrayList<String> list2_1 = new ArrayList<>();
-    ArrayList<String> list2_2 = new ArrayList<>();
+    ArrayList<String> listadapter1 = new ArrayList<>();
+    ArrayList<String> listadapter2_1 = new ArrayList<>();
+    ArrayList<String> listadapter2_2 = new ArrayList<>();
+
     ListView listView1, listView2;
 
     @Override
@@ -40,8 +41,8 @@ public class HistoryListActivity extends AppCompatActivity
 
         listView1 = findViewById(R.id.listHistory1);
         listView2 = findViewById(R.id.listHistory2);
-        list1.addAll(DBMethods.outputMap(this));
-        DBMethods.WordCount(this);
+        listadapter1.addAll(DBMethods.outputDate(this));
+        DBMethods.wordCount(this);
 
         //region toolbar, drawer, navigationView
         Toolbar toolbar = findViewById(R.id.toolbar4);
@@ -75,22 +76,22 @@ public class HistoryListActivity extends AppCompatActivity
         tabHost.setCurrentTab(0);
         //endregion
 
-        if(list1.size()!=0){
-            HistoryAdapter adapter = new HistoryAdapter(this, list1);
+        if(listadapter1.size()!=0){
+            HistoryAdapter adapter = new HistoryAdapter(this, listadapter1);
             listView1.setAdapter(adapter);
         }
 
         Map<String, Integer> map = new LinkedHashMap<>();
 
-        map.putAll(Sort(DBMethods.WordCount(this)));
+        map.putAll(Sort(DBMethods.wordCount(this)));
 
         if(map.size()!=0){
             for (Object word : map.keySet()) {
-                list2_1.add(word.toString());
-                list2_2.add(map.get(word).toString());
+                listadapter2_1.add(word.toString());
+                listadapter2_2.add(map.get(word).toString());
             }
 
-            WordAdapter wordAdapter = new WordAdapter(this, list2_1, list2_2, WordActivity.class);
+            WordAdapter wordAdapter = new WordAdapter(this, listadapter2_1, listadapter2_2, WordActivity.class);
             listView2.setAdapter(wordAdapter);
         }
     }
@@ -138,14 +139,11 @@ public class HistoryListActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.home) {
-
             Intent intent = new Intent(HistoryListActivity.this, MainActivity.class);
             startActivity(intent);
-            // Handle the camera action
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout4);

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    tools:showIn="@layout/app_bar_first">
+    tools:showIn="@layout/app_bar_main">
 
     <ListView
         android:id="@+id/listView1"
