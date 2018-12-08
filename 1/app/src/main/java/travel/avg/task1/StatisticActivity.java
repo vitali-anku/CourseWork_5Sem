@@ -1,6 +1,8 @@
 package travel.avg.task1;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,6 +43,9 @@ public class StatisticActivity extends AppCompatActivity
 
     ArrayList<String> list1 = new ArrayList<>();
     ArrayList<Integer> list2 = new ArrayList<>();
+
+    List<Integer> integers = new ArrayList<>();
+    List<String> strings = new ArrayList<>();
 
     Map<String, Integer> sortedMap = new LinkedHashMap<>();
 
@@ -64,6 +73,11 @@ public class StatisticActivity extends AppCompatActivity
 
         sortedMap.putAll(Sort());
 
+        for (String s : sortedMap.keySet()) {
+            strings.add(s);
+            integers.add(sortedMap.get(s));
+        }
+
         for (Object name : sortedMap.keySet()) {
             list1.add(name.toString());
             list2.add(ArList.interviewList.get(name));
@@ -73,7 +87,7 @@ public class StatisticActivity extends AppCompatActivity
         listView.setAdapter(adapter);
 
         Date presentTime_Date = Calendar.getInstance().getTime();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY HH:mm:ss");
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+3"));
 
         ArList.dateList.put(dateFormat.format(presentTime_Date), sortedMap);
@@ -96,7 +110,34 @@ public class StatisticActivity extends AppCompatActivity
             }
         });
         //endregion
+
+        //region GRAPH
+        GraphView graph = findViewById(R.id.graph);
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<>(open());
+
+        series.setSpacing(2);
+
+        //draw values on top
+        series.setDrawValuesOnTop(true);
+        series.setValuesOnTopColor(Color.RED);
+        series.setValuesOnTopSize(50);
+
+        graph.setTitle("Result");
+
+        graph.addSeries(series);
+
+        //endregion
     }
+
+    private DataPoint[] open(){
+        int pos = integers.size();
+        DataPoint[] val = new DataPoint[pos];
+        for (int i = 0; i<pos; i++){
+            val[i] = new DataPoint(i, integers.get(i));
+        }
+        return val;
+    }
+
 
     private Map<String, Integer> Sort(){
         //convert map to a List
